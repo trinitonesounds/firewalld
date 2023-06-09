@@ -379,7 +379,7 @@ def check_for_overlapping_entries(entries):
     # detect them all.
     #
     entries.sort()
-    prev_network = entries.pop(0)
+    prev_network = entries.pop(0) if entries else None
     for current_network in entries:
         if prev_network.overlaps(current_network):
             raise FirewallError(errors.INVALID_ENTRY, "Entry '{}' overlaps entry '{}'".format(prev_network, current_network))
